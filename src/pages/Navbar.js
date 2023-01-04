@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
-  const { user, isAuthenticated, isLoading, loginWithRedirect, logout } =
+  const { user, isAuthenticated, loginWithRedirect, logout } =
     useAuth0();
+
+   
 
   return (
     <div className="navbar bg-base-100">
@@ -17,6 +19,11 @@ const Navbar = () => {
             {" "}
             <Link to="/">Home</Link>{" "}
           </li>
+
+          {
+            user?.email === "admin@gmail.com" && 
+            <li> <Link to = '/admin'>Admin Panel</Link></li>
+          }
 
           {isAuthenticated ? (
             <>

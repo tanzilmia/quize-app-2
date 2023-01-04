@@ -5,6 +5,7 @@ import Quize from "../pages/Quize";
 import Profile from "../pages/Profile";
 import PrivetRouting from "./PrivetRouting";
 import Error from "../pages/Error";
+import AdminPanel from "../pages/AdminPanel";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,6 +20,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",element: <PrivetRouting><Profile/></PrivetRouting>
+      },
+      {
+        path: "/admin",element: <PrivetRouting> <AdminPanel/> </PrivetRouting>
       },
     ],
   },

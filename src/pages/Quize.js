@@ -19,7 +19,7 @@ function Quize() {
   const {data:userdata = {}, refetch} = useQuery({
     queryKey : ['userinfo'],
     queryFn : async ()=>{
-      const res = await fetch(`https://server-five-gold.vercel.app/userinfo?email=${user?.email}&date=${date}`)
+      const res = await fetch(`http://localhost:5000/userinfo?email=${user?.email}&date=${date}`)
       const data = await res.json()
       return data
     }
@@ -42,7 +42,7 @@ function Quize() {
     };
     if (date !== userdata?.date) {
       fetch(
-        `https://server-five-gold.vercel.app/userifno?email=${user?.email}&date=${date}`,
+        `http://localhost:5000/userifno?email=${user?.email}&date=${date}`,
         {
           method: "POST",
           headers: {
@@ -56,7 +56,7 @@ function Quize() {
           console.log(result);
         });
     }
-    fetch(`https://server-five-gold.vercel.app/quize?email=${user?.email}&date=${date}`)
+    fetch(`http://localhost:5000/quize?email=${user?.email}&date=${date}`)
       .then((res) => res.json())
       .then((data) => setqueges(data));
   };
@@ -66,7 +66,7 @@ function Quize() {
     if (option === answer) {
       setscore(score + 1);
       fetch(
-        `https://server-five-gold.vercel.app/correctans?email=${user?.email}&date=${date}`,
+        `http://localhost:5000/correctans?email=${user?.email}&date=${date}`,
         {
           method: "PUT",
           headers: {
@@ -84,7 +84,7 @@ function Quize() {
     if (option !== answer) {
       setwrongAns(wrongAns + 1);
       fetch(
-        `https://server-five-gold.vercel.app/incurrentquestion?email=${user?.email}&date=${date}`,
+        `http://localhost:5000/incurrentquestion?email=${user?.email}&date=${date}`,
         {
           method: "PUT",
           headers: {
@@ -100,7 +100,7 @@ function Quize() {
         });
     }
     fetch(
-      `https://server-five-gold.vercel.app/currentquestion?email=${user?.email}&date=${date}`,
+      `http://localhost:5000/currentquestion?email=${user?.email}&date=${date}`,
       {
         method: "PUT",
         headers: {
