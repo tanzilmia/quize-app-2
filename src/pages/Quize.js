@@ -6,13 +6,17 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/style.css";
 function Quize() {
-  const { user, isAuthenticated, isLoading } =useAuth0();
+  const { user, isLoading } =useAuth0();
   const [queges, setqueges] = useState([]);
  
   const date = moment().format("MMM Do YY");
-  const [currentQuestion, setcurrentQuestion] = useState(0);
-  const [score, setscore] = useState(0);
-  const [wrongAns, setwrongAns] = useState(0);
+  // const [currentQuestion, setcurrentQuestion] = useState(0);
+  // const [score, setscore] = useState(0);
+  // const [wrongAns, setwrongAns] = useState(0);
+  let currentQuestion = 0;
+  let score = 0;
+  let wrongAns = 0;
+
   const email = user?.email;
   
 
@@ -64,7 +68,6 @@ function Quize() {
   const answer = queges[indexs]?.correct_answer;
   const getAnswer = (option) => {
     if (option === answer) {
-      setscore(score + 1);
       fetch(
         `https://server-five-gold.vercel.app/correctans?email=${user?.email}&date=${date}`,
         {
@@ -82,7 +85,7 @@ function Quize() {
         });
     }
     if (option !== answer) {
-      setwrongAns(wrongAns + 1);
+      
       fetch(
         `https://server-five-gold.vercel.app/incurrentquestion?email=${user?.email}&date=${date}`,
         {
