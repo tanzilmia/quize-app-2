@@ -9,7 +9,7 @@ const AdminPanel = () => {
     const {data:admindata = []} = useQuery({
         queryKey : ['alluserinfo'],
         queryFn : async ()=>{
-          const res = await fetch(`http://localhost:5000/alluserinfo`)
+          const res = await fetch(`https://server-five-gold.vercel.app/alluserinfo`)
           const data = await res.json()
           return data
         }

@@ -20,6 +20,7 @@ const Navbar = () => {
             <Link to="/">Home</Link>{" "}
           </li>
 
+          
           {
             user?.email === "admin@gmail.com" && 
             <li> <Link to = '/admin'>Admin Panel</Link></li>

@@ -12,7 +12,7 @@ const Profile = () => {
     queryKey: ["storeuser", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/totalinfo?email=${user?.email}`
+        `https://server-five-gold.vercel.app/totalinfo?email=${user?.email}`
       );
       const data = await res.json();
       return data;
